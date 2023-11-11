@@ -91,7 +91,7 @@ if image_data is not None:
                 # The second column will show a bar graph with the Confidence scores of each digit
                 with col2:
                     st.write(f'The predicted Digit is {digit} with Confidence {conf:.2f}')
-                    st.write(f'The predicted digit in देवनागरी = {dict1[str(digit)]})
+                    st.write(f'The predicted digit in देवनागरी = {dict1[str(digit)]}')
                     st.write(f'The predicted digit in తెలుగు = {dict2[str(digit)]}')
                     st.write(f'The predicted digit in தமிழ் = {dict3[str(digit)]}')
                   
