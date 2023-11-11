@@ -90,10 +90,9 @@ if image_data is not None:
 
                     df = pd.DataFrame(
                         y_pred_prob_numpy,
-                        [0,1,2,3,4,5,6,7,8,9]                
-                    )
-                  fig = px.pie(df)
-                  st.plotly_chart(fig)
+                        [0,1,2,3,4,5,6,7,8,9])
+                    fig = px.pie(df)
+                    st.plotly_chart(fig)
 
 
         
