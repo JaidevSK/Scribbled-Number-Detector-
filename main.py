@@ -19,8 +19,8 @@ st.header("Scribble any number onb the canvas")
 
 # Create a canvas component
 image_data = st_canvas(stroke_width=10,
-                       stroke_color='#1AFAF6',
-                       background_color='#FA911A',
+                       stroke_color='#FA911A',
+                       background_color='#1AFAF6',
                        width=500,
                        height=200
                        )
