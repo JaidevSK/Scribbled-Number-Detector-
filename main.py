@@ -16,7 +16,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # Input the model path here
 model = model.initialize_model(r'MNIST_Digit_Detector.pt')
 
-st.header("Scribble any number onb the canvas")
+st.subheader("Scribble any number on the canvas")
 
 # Create a canvas component
 image_data = st_canvas(stroke_width=10,
@@ -85,7 +85,7 @@ if image_data is not None:
 
                 # The second column will show a bar graph with the Confidence scores of each digit
                 with col2:
-                    st.write(f'The predicted Digit is: {digit} with Confidence: {conf:.2f}')
+                    st.write(f'The predicted Digit is {digit} with Confidence: {conf:.2f}')
                   
                     y_pred_prob_numpy = y_pred_prob.squeeze().to('cpu').numpy()
               
