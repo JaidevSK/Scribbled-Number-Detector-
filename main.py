@@ -10,7 +10,7 @@ import image_preprocessor as ip #File containing the preprocessing functions
 import plotly.express as px
 
 st.title("Scribbled Numbers Classifier and Translator")
-st.write(This application takes in the input of the number
+st.write("This application takes in the input of the number and gives translated output")
 # Run in GPU if available
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
