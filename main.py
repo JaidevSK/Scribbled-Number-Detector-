@@ -17,7 +17,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # Input the model path here
 model = model.initialize_model(r'MNIST_Digit_Detector.pt')
 
-st.subheader("Scribble any number on the canvas, and the corresponding number is given in Devanagari script, ")
+st.subheader("Scribble any number on the canvas, and the corresponding number is given in Devanagari script, Telugu Script and Tamil Script")
 
 # Create a canvas component
 image_data = st_canvas(stroke_width=10,
