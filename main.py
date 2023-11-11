@@ -6,6 +6,7 @@ import pandas as pd
 from PIL import Image
 import model #File containing the model
 import image_preprocessor as ip #File containing the preprocessing functions
+import plotly.express as px
 
 st.title("Scribbled Numbers Classifier")
 
@@ -87,7 +88,7 @@ if image_data is not None:
                     st.write(f'The predicted Digit is: {digit} with Confidence: {conf:.2f}')
                   
                     y_pred_prob_numpy = y_pred_prob.squeeze().to('cpu').numpy()
-
+              
                     df = pd.DataFrame(
                         y_pred_prob_numpy,
                         [0,1,2,3,4,5,6,7,8,9])
