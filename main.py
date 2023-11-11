@@ -15,18 +15,14 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # Input the model path here
 model = model.initialize_model(r'MNIST_Digit_Detector.pt')
 
-st.success("""
-Draw on the canvas and get your digits predicted with confidence scores!
-""")
-
-st.header("Drawable Canvas")
+st.header("Scribble any number onb the canvas")
 
 # Create a canvas component
 image_data = st_canvas(stroke_width=10,
-                       stroke_color='#000000',
-                       background_color='#FFFFFF',
-                       width=700,
-                       height=80
+                       stroke_color='#1AFAF6',
+                       background_color='#FA911A',
+                       width=500,
+                       height=200
                        )
 
 # Take the image data attribute and store it in the same variable.
