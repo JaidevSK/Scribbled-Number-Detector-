@@ -1,28 +1,62 @@
+# Import necessary files
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import torch
 from torchvision import transforms
+
 import pandas as pd
 from PIL import Image
+
 import model
 import image_preprocessor as ip
 
-st.title("Scribbled Number Detector")
+# Set the Streamlit page configuration and Title
+st.set_page_config(page_title=r"Digit Detector",
+                   page_icon=r'streamlit_icon.png',)
+st.title("Digit Detector using MNIST Dataset")
+
+# Change in Streamlit
+hide_footer = """
+<style>
+footer{
+    visibility:visible;
+}
+footer:before{
+    content: 'Coded by Sameer with ❤️';
+    display:block;
+    position:relative;
+    color:tomato;
+}
+</style>
+"""
+st.markdown(hide_footer,unsafe_allow_html=True)
+
+# Run in GPU if available
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Input the model path here
 model = model.initialize_model(r'MNIST_Digit_Detector.pt')
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-st.header("Scribble on the Canvas and get the find the number!")
+
+st.success("""
+Draw on the canvas and get your digits predicted with confidence scores!
+""")
+
+st.header("Drawable Canvas")
 
 # Create a canvas component
 image_data = st_canvas(stroke_width=10,
-                       stroke_color='#FA5734',
-                       background_color='#1AFAF6',
+                       stroke_color='#000000',
+                       background_color='#FFFFFF',
                        width=700,
-                       height=200
+                       height=80
                        )
 
+# Take the image data attribute and store it in the same variable.
+# PS. Thats the only thing we need
 image_data = image_data.image_data
+
+
+# Do something interesting with the image data
 if image_data is not None:
 
     # Extract a list of digits
