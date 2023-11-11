@@ -80,16 +80,20 @@ if image_data is not None:
 
                 # The first column will show the image and the highest predicted value
                 with col1:
-                    st.image(invert,caption=f'Prediction: {digit}  |  Confidence: {conf:.2f}')
+                    st.image(invert)
 
                 # The second column will show a bar graph with the Confidence scores of each digit
                 with col2:
+                    st.write(f'The predicted Digit is: {digit} with Confidence: {conf:.2f}')
+                  
                     y_pred_prob_numpy = y_pred_prob.squeeze().to('cpu').numpy()
 
-                    chart_data = pd.DataFrame(
+                    df = pd.DataFrame(
                         y_pred_prob_numpy,
                         [0,1,2,3,4,5,6,7,8,9]                
                     )
+                  fig = px.pie(df)
+                  st.plotly_chart(fig)
 
 
         
