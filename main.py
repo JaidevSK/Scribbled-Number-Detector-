@@ -8,15 +8,15 @@ import model #File containing the model
 import image_preprocessor as ip #File containing the preprocessing functions
 import plotly.express as px
 
-st.title("Scribbled Numbers Classifier")
-
+st.title("Scribbled Numbers Classifier and Translator")
+st.write(This application takes in the input of the number
 # Run in GPU if available
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Input the model path here
 model = model.initialize_model(r'MNIST_Digit_Detector.pt')
 
-st.subheader("Scribble any number on the canvas")
+st.subheader("Scribble any number on the canvas, and the corresponding number is given in Devanagari script, ")
 
 # Create a canvas component
 image_data = st_canvas(stroke_width=10,
@@ -81,11 +81,16 @@ if image_data is not None:
 
                 # The first column will show the image and the highest predicted value
                 with col1:
+                    dict1={'0':'०', '1':'१', '2':'२', '3':'३', '4':'४', '5':'५', '6':'६', '7':'७', '8':'८', '9':'९'}
+                    dict2={"0":"౦", "1":"౧", "2":"౨", "3":"౩", "4":"౪", "5":"౫", "6":"౬", "7":"౭", "8":"౮", "9":"౯"}
+                    dict3={"0":"౦", "1":"௧", "2":"௨", "3":"௩", "4":"௪", "5":"௫", "6":"௬", "7":"௭", "8":"௮", "9":"௯"}
+                    dict4={'0':'_', '1':'I', '2':'II', '3':'III', '4':'IV', '5':'V', '6':'VI', '7':'VII', '8':'VIII', '9':'IX'}
                     st.image(invert)
 
                 # The second column will show a bar graph with the Confidence scores of each digit
                 with col2:
-                    st.write(f'The predicted Digit is {digit} with Confidence: {conf:.2f}')
+                    st.write(f'The predicted Digit is {digit} with Confidence {conf:.2f}')
+                    st.write(f'The predicted digit in देवनागरी = {dict1[str(digit)]}\nThe predicted digit in తెలుగు = {dict2[str(digit)]}\nThe predicted digit in தமிழ் = {dict3[str(digit)]}')
                   
                     y_pred_prob_numpy = y_pred_prob.squeeze().to('cpu').numpy()
               
