@@ -11,7 +11,7 @@ st.title("Scribbled Number Detector")
 
 # Input the model path here
 model = model.initialize_model(r'MNIST_Digit_Detector.pt')
-
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 st.header("Scribble on the Canvas and get the find the number!")
 
 # Create a canvas component
