@@ -1,35 +1,13 @@
-# Import necessary files
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import torch
 from torchvision import transforms
-
 import pandas as pd
 from PIL import Image
+import model #File containing the model
+import image_preprocessor as ip #File containing the preprocessing functions
 
-import model
-import image_preprocessor as ip
-
-# Set the Streamlit page configuration and Title
-st.set_page_config(page_title=r"Scribbled Number Detector",
-                   page_icon=r'streamlit_icon.png',)
-st.title("Digit Detector using MNIST Dataset")
-
-# Change in Streamlit
-hide_footer = """
-<style>
-footer{
-    visibility:visible;
-}
-footer:before{
-    content: 'Coded by Sameer with ❤️';
-    display:block;
-    position:relative;
-    color:tomato;
-}
-</style>
-"""
-st.markdown(hide_footer,unsafe_allow_html=True)
+st.title("Scribbled Numbers Classifier")
 
 # Run in GPU if available
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
